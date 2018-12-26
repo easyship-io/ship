@@ -12,10 +12,10 @@
 2. Run `bolt install` to install dependencies;
 
 ### Linking
-- Run `npm run link` to link globally;
+1. Run `npm run dev:link` to link globally;
 
 **After source is updated:**
 
 1. `cd` to this repository root;
 2. Run `bolt install` to install dependencies;
-3. Run `npm run link` to link globally;
+3. Run `npm run dev:link` to link globally;

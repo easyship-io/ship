@@ -1,6 +1,6 @@
 const chalk = require('chalk');
 
-module.exports = {
+const logger = {
     log(...params) {
         console.log(...params);
     },
@@ -17,3 +17,5 @@ module.exports = {
         this.log(...params);
     }
 };
+
+module.exports = logger;
