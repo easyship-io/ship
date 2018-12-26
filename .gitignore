@@ -1,0 +1,11 @@
+# misc
+**/.DS_Store
+
+# editor
+.idea
+.vscode
+
+# dependencies
+package-lock.json
+node_modules/
+yarn.lock

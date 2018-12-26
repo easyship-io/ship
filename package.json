@@ -1,0 +1,22 @@
+{
+  "name": "@easyship/ship-cli",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "link": "sudo npm unlink && sudo npm link"
+  },
+  "bin": {
+    "reactship": "packages/reactship/bin/reactship.js"
+  },
+  "repository": "https://github.com/easyship-io/ship-cli.git",
+  "author": "Marko Matić <mail.marko.matic@gmail.com>",
+  "license": "MIT",
+  "bolt": {
+    "workspaces": [
+      "packages/*"
+    ]
+  },
+  "dependencies": {
+    "chalk": "^2.4.1"
+  }
+}
