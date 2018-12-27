@@ -30,7 +30,9 @@ module.exports = {
     singleRun: true,
     port: 9876,
     colors: true,
-    webpack: require('./webpack'),
+    webpack: require('./../webpack')({
+        type: 'test'
+    }),
     webpackMiddleware: {
         stats: 'errors-only'
     },

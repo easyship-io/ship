@@ -31,6 +31,7 @@ module.exports = async () => {
     const tasks = [];
 
     !!argv.test && tasks.push('test');
+    !!argv.build && tasks.push('build');
 
     const runner = new Runner();
     for (let task of tasks) {

@@ -6,6 +6,6 @@
 - reactship:
   * [x] enable running from command line
   * [x] add gulp tasks
-  * [x] enable testing
-  * [ ] build output into `build/` dir
-  * [ ] enable development in live server
+  * [x] testing
+  * [x] build
+  * [ ] development and livereload

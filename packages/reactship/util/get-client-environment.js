@@ -1,5 +1,4 @@
-const NODE_ENV = process.env.NODE_ENV;
-if (!NODE_ENV) {
+if (!process.env.NODE_ENV) {
     throw new Error(
         'The NODE_ENV environment variable is required but was not specified.'
     );
@@ -20,7 +19,7 @@ const getClientEnvironment = publicUrl => {
             {
                 // Useful for determining whether we’re running in production mode.
                 // Most importantly, it switches React into the correct mode.
-                NODE_ENV,
+                NODE_ENV: process.env.NODE_ENV,
                 // Useful for resolving the correct path to static assets in `public`.
                 // For example, <img src={process.env.PUBLIC_URL + '/img/logo.png'} />.
                 // This should only be used as an escape hatch. Normally you would put
@@ -31,10 +30,13 @@ const getClientEnvironment = publicUrl => {
 
     // Stringify all values so we can feed into Webpack DefinePlugin
     return {
-        'process.env': Object.keys(clientEnvironment).reduce((env, key) => {
-            env[key] = JSON.stringify(clientEnvironment[key]);
-            return env;
-        }, {}),
+        raw: clientEnvironment,
+        stringified: {
+            'process.env': Object.keys(clientEnvironment).reduce((env, key) => {
+                env[key] = JSON.stringify(clientEnvironment[key]);
+                return env;
+            }, {}),
+        }
     };
 };
 
