@@ -31,8 +31,8 @@ module.exports = () => {
     define(
         'test:configure-environment',
         done => {
-            process.env.BABEL_ENV = 'test';
-            process.env.NODE_ENV = 'test';
+            process.env.BABEL_ENV = 'development';
+            process.env.NODE_ENV = 'development';
             done();
         }
     );
@@ -55,13 +55,14 @@ module.exports = () => {
     define(
         'test:copy-enzyme',
         () =>
-            gulp.src(path.join(scriptPaths.get().testAssets, 'enzyme.js'))
+            gulp.src(path.join(scriptPaths.get().testAssets, 'react-16-enzyme.js'))
                 .pipe(
                     modifyContent(
                         content =>
                             content
                                 .replace(/\${JASMINE_ENZYME}/g, path.join(scriptPaths.get().nodeModules, 'jasmine-enzyme'))
-                                .replace(/\${REACT_ENZYME_ADAPTER}/g, path.join(scriptPaths.get().nodeModules, 'enzyme-adapter-react-16'))
+                                .replace(/\${ENZYME}/g, path.join(scriptPaths.get().nodeModules, 'enzyme'))
+                                .replace(/\${REACT_16_ENZYME_ADAPTER}/g, path.join(scriptPaths.get().nodeModules, 'enzyme-adapter-react-16'))
                     )
                 )
                 .pipe(gulp.dest(appPaths.get().test))

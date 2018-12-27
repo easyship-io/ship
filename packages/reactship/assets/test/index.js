@@ -1,5 +1,3 @@
-require('./enzyme');
-
 try {
     require('${INIT_TESTS}');
 } catch (error) {

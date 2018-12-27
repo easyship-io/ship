@@ -17,7 +17,13 @@ module.exports = async () => {
     appPaths.configure({
         root: process.cwd(),
         test: 'test',
-        src: 'src'
+        src: 'src',
+        build: 'build',
+        public: 'public',
+        html: 'public/index.html',
+        indexJs: 'src/index.js',
+        packageJson: 'package.json',
+        nodeModules: 'node_modules'
     });
 
     configure();

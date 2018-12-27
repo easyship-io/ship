@@ -1,6 +1,7 @@
 const appPaths = require('@easyship/ship-core/paths/app');
 const path = require('path');
 const bootstrapFilePath = path.join(appPaths.get().test, 'index.js');
+const react16EnzymeFilePath = path.join(appPaths.get().test, 'react-16-enzyme.js');
 
 module.exports = {
     basePath: '.',
@@ -8,10 +9,14 @@ module.exports = {
         'jasmine'
     ],
     files: [
-        bootstrapFilePath
+        bootstrapFilePath,
+        react16EnzymeFilePath
     ],
     preprocessors: {
         [bootstrapFilePath]: [
+            'webpack'
+        ],
+        [react16EnzymeFilePath]: [
             'webpack'
         ]
     },

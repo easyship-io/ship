@@ -4,7 +4,7 @@ const modifyContent = fn => through2.obj((file, enc, cb) => {
     const contents = fn(String(file.contents), file.path, file);
 
     if (file.isBuffer() === true) {
-        file.contents = new Buffer(contents);
+        file.contents = Buffer.from(contents);
     }
 
     cb(null, file);
