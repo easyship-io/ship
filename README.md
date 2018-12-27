@@ -5,7 +5,7 @@
 #### Tasks:
 - reactship:
   * [x] enable running from command line
-  * [ ] add gulp tasks
-  * [ ] enable serve in a dev server
-  * [ ] build and output into `build/` dir
-  * [ ] run tests
+  * [x] add gulp tasks
+  * [x] enable testing
+  * [ ] build output into `build/` dir
+  * [ ] enable development in live server
