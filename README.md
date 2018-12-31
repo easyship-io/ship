@@ -4,8 +4,9 @@
 
 #### Tasks:
 - general
+  * [x] repo license
   * [ ] list & links to available tools
-  * [ ] repo license
+  * [ ] contribution guidelines
 - reactship:
   * [x] running from command line
   * [x] gulp tasks
@@ -14,3 +15,4 @@
   * [x] development
   * [x] instructions
   * [ ] create app
+  * [ ] linting
