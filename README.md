@@ -5,6 +5,7 @@
 #### Tasks:
 - general
   * [ ] list & links to available tools
+  * [ ] repo license
 - reactship:
   * [x] running from command line
   * [x] gulp tasks
