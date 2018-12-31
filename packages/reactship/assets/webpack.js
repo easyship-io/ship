@@ -13,6 +13,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 
 const buildConfig = (
     {
@@ -67,7 +68,8 @@ const buildConfig = (
             ],
             alias: {
                 'react-native': 'react-native-web'
-            }
+            },
+            plugins: []
         },
         module: {
             strictExportPresence: true,
@@ -86,7 +88,11 @@ const buildConfig = (
             net: 'empty',
             tls: 'empty',
             child_process: 'empty',
-        }
+        },
+        optimization: {
+            minimizer: []
+        },
+        performance: {}
     };
 
     const extendConfig = {
@@ -120,9 +126,6 @@ const buildConfig = (
                         .replace(/\\/g, '/'),
             };
 
-            webpackConfig.resolve = webpackConfig.resolve || {};
-
-            webpackConfig.resolve.plugins = webpackConfig.resolve.plugins || [];
             webpackConfig.resolve.plugins.push(
                 new ModuleScopePlugin(
                     appPaths.get().src,
@@ -132,7 +135,6 @@ const buildConfig = (
                 )
             );
 
-            fileRulesSelector.oneOf = fileRulesSelector.oneOf || [];
             fileRulesSelector.oneOf.unshift(
                 {
                     test: /\.(js|jsx|mjs)$/,
@@ -200,7 +202,6 @@ const buildConfig = (
                 }
             );
 
-            webpackConfig.plugins = webpackConfig.plugins || [];
             webpackConfig.plugins.push(
                 new InterpolateHtmlPlugin(HtmlWebpackPlugin, clientEnvironment.raw),
                 new HtmlWebpackPlugin({
@@ -247,9 +248,6 @@ const buildConfig = (
                 })
             );
 
-            webpackConfig.optimization = webpackConfig.optimization || {};
-
-            webpackConfig.optimization.minimizer = webpackConfig.optimization.minimizer || [];
             webpackConfig.optimization.minimizer.push(
                 new UglifyJsPlugin({
                     uglifyOptions: {
@@ -267,15 +265,104 @@ const buildConfig = (
                 })
             );
         },
+        ['dev']: () => {
+            const publicPath = '/';
+            const publicUrl = '';
+            const clientEnvironment = getClientEnvironment(publicUrl);
+
+            webpackConfig.devtool = 'cheap-module-source-map';
+            webpackConfig.entry = [
+                require.resolve('react-dev-utils/webpackHotDevClient'),
+                appPaths.get().indexJs
+            ];
+            webpackConfig.output = {
+                pathinfo: true,
+                filename: 'static/js/bundle.js',
+                chunkFilename: 'static/js/[name].chunk.js',
+                publicPath,
+                devtoolModuleFilenameTemplate: info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
+            };
+
+            webpackConfig.resolve.plugins.push(
+                new ModuleScopePlugin(
+                    appPaths.get().src,
+                    [
+                        appPaths.get().packageJson
+                    ]
+                )
+            );
+
+            fileRulesSelector.oneOf.unshift(
+                {
+                    test: /\.(js|jsx|mjs)$/,
+                    include: appPaths.get().src,
+                    loader: require.resolve('babel-loader'),
+                    options: {
+                        cacheDirectory: true,
+                        presets: [
+                            require.resolve('@babel/preset-react'),
+                            require.resolve('@babel/preset-env')
+                        ],
+                        plugins: [
+                            [
+                                require.resolve('@babel/plugin-proposal-class-properties'),
+                                {
+                                    loose: true
+                                }
+                            ]
+                        ]
+                    }
+                },
+                {
+                    test: /\.css$/,
+                    use: [
+                        require.resolve('style-loader'),
+                        {
+                            loader: require.resolve('css-loader'),
+                            options: {
+                                importLoaders: 1,
+                            }
+                        },
+                        {
+                            loader: require.resolve('postcss-loader'),
+                            options: {
+                                ident: 'postcss',
+                                plugins: () => [
+                                    require('postcss-flexbugs-fixes'),
+                                    autoprefixer({
+                                        browsers: [
+                                            '>1%',
+                                            'last 4 versions',
+                                            'Firefox ESR',
+                                            'not ie < 9', // React doesn't support IE8 anyway
+                                        ],
+                                        flexbox: 'no-2009',
+                                    })
+                                ]
+                            }
+                        }
+                    ],
+                }
+            );
+
+            webpackConfig.plugins.push(
+                new InterpolateHtmlPlugin(HtmlWebpackPlugin, clientEnvironment.raw),
+                new HtmlWebpackPlugin({
+                    inject: true,
+                    template: appPaths.get().html
+                }),
+                new webpack.DefinePlugin(clientEnvironment.stringified),
+                new webpack.HotModuleReplacementPlugin(),
+                new WatchMissingNodeModulesPlugin(appPaths.get().nodeModules)
+            );
+
+            webpackConfig.performance.hints = false;
+        },
         ['test']: () => {
             const publicUrl = '';
 
-            webpackConfig.resolve = webpackConfig.resolve || {};
-
-            webpackConfig.resolve.alias = webpackConfig.resolve.alias || {};
             webpackConfig.resolve.alias['@easyship/react-enzyme'] = path.join(appPaths.get().test, 'react-16-enzyme.js');
 
-            webpackConfig.resolve.plugins = webpackConfig.resolve.plugins || [];
             webpackConfig.resolve.plugins.push(
                 new ModuleScopePlugin(
                     [
@@ -288,8 +375,6 @@ const buildConfig = (
                 )
             );
 
-            webpackConfig.module = webpackConfig.module || {};
-            webpackConfig.module.rules = webpackConfig.module.rules || [];
             webpackConfig.module.rules.unshift(
                 {
                     test: /\.(js|jsx|mjs)$/,
@@ -307,7 +392,6 @@ const buildConfig = (
                 }
             );
 
-            fileRulesSelector.oneOf = fileRulesSelector.oneOf || [];
             fileRulesSelector.oneOf.unshift(
                 {
                     test: /\.(js|jsx|mjs)$/,
@@ -362,13 +446,11 @@ const buildConfig = (
                 }
             );
 
-            webpackConfig.plugins = webpackConfig.plugins || [];
             webpackConfig.plugins.push(
                 new webpack.DefinePlugin(getClientEnvironment(publicUrl).stringified),
                 new WebpackBailPlugin()
             );
 
-            webpackConfig.performance = webpackConfig.performance || {};
             webpackConfig.performance.hints = false;
         }
     };

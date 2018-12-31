@@ -4,8 +4,9 @@
 
 #### Tasks:
 - reactship:
-  * [x] enable running from command line
-  * [x] add gulp tasks
+  * [x] running from command line
+  * [x] gulp tasks
   * [x] testing
   * [x] build
-  * [ ] development and livereload
+  * [x] development
+  * [ ] instructions
