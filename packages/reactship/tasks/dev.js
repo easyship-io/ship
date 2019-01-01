@@ -14,6 +14,7 @@ const WebpackDevServer = require('webpack-dev-server');
 const createDevServerConfig = require('../assets/dev-server.config');
 const clearConsole = require('react-dev-utils/clearConsole');
 const openBrowser = require('react-dev-utils/openBrowser');
+const { forEach } = require('lodash');
 
 module.exports = () => {
     logger.info('Configuring dev...');
@@ -154,12 +155,14 @@ module.exports = () => {
     define(
         'dev:signals',
         done => {
-            ['SIGINT', 'SIGTERM'].forEach(sig => {
-                process.on(sig, () => {
-                    devServer && devServer.close();
-                    process.exit();
+            forEach(
+                ['SIGINT', 'SIGTERM'],
+                sig => {
+                    process.on(sig, () => {
+                        devServer && devServer.close();
+                        process.exit();
+                    });
                 });
-            });
 
             done();
         }

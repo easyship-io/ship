@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev:link": "/bin/sh scripts/dev:link.sh"
+    "dev:link": "node dev-scripts/dev-link.js"
   },
   "repository": "https://github.com/easyship-io/ship-cli.git",
   "author": "Marko Matić <mail.marko.matic@gmail.com>",
   "license": "MIT",
   "bolt": {
     "workspaces": [
-      "packages/*"
+      "packages/*",
+      "dev-scripts"
     ]
   },
   "dependencies": {
@@ -50,6 +51,7 @@
     "react-dev-utils": "^7.0.0",
     "resolve": "^1.9.0",
     "sass-loader": "^7.1.0",
+    "shelljs": "^0.8.3",
     "style-loader": "^0.23.1",
     "sw-precache-webpack-plugin": "^0.11.5",
     "through2": "^3.0.0",
