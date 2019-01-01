@@ -14,11 +14,19 @@ if (os.platform() !== 'win32') {
     const modulesPath = '/usr/local/bin';
 
     forEach(toolsPaths, (toolPath, tool) => {
-        const installPath = path.join(modulesPath, `${tool}.cmd`);
+        const installPath = path.join(modulesPath, `${tool}`);
         logger.info(`Removing "${installPath}".`);
         fsExtra.removeSync(installPath);
         logger.info(`Linking "${installPath}" to "${toolPath}".`);
-        fsExtra.ensureLinkSync(toolPath, installPath);
+        exec([
+            `ln -s "${toolPath}" "${installPath}"`,
+            {
+                silent: true
+            },
+            {
+                errorMessage: `"ln -s "${toolPath}" "${installPath}"" command failed.`
+            }
+        ]);
     });
 
     return;
@@ -28,8 +36,11 @@ const npmConfig = exec([
     'npm config ls -l',
     {
         silent: true
-    }]
-);
+    },
+    {
+        errorMessage: '"npm config ls -l" command failed.'
+    }
+]);
 const prefixRegEx = /^prefix = .*$/m;
 const prefixConfig = npmConfig.match(prefixRegEx);
 let modulesPath = prefixConfig && prefixConfig[0] && prefixConfig[0].split(' = ')[1];
