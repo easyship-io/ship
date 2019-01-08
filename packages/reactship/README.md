@@ -14,29 +14,29 @@ Before running any command, navigate to application root directory (`cd <app-pat
 
 ```
 # Test
-reactship --test
+reactship test
 
 # Run development server
-reactship --dev
+reactship dev
 
 # Build for production
-reactship --build
+reactship build
 ```
 
 #### Testing
 
-Command: `reactship --test`
+Command: `reactship test`
 
 Command will run all tests (`.spec.js` files) inside `src` directory.
 
 #### Development
 
-Command: `reactship --dev`
+Command: `reactship dev`
 
 Command will run webpack development server and will serve all content inside `src` directory. This command should be used during the development.
 
 #### Build
 
-Command: `reactship --build`
+Command: `reactship build`
 
 Command will build application for production. Output will be saved in to `build` directory.
