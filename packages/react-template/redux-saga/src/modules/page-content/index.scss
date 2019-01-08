@@ -1,0 +1,8 @@
+.PageContent {
+  flex: 1;
+  overflow: auto;
+
+  &.padded {
+    padding: 5px 10px;
+  }
+}

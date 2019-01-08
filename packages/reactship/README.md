@@ -13,6 +13,9 @@ Before running any command, navigate to application root directory (`cd <app-pat
 ### Commands
 
 ```
+# Create new application
+reactship create <template> <app-name>
+
 # Test
 reactship test
 
@@ -22,6 +25,16 @@ reactship dev
 # Build for production
 reactship build
 ```
+#### Create
+
+Command: `reactship create <template> <app-name>`
+
+Command will create new react project from provided template name inside provided `project-name` directory.
+
+##### Arguments
+
+- `template` - Template to create new project from. Allowed values: `redux-saga`;
+- `project-name` - Name of the project. Directory containing source code will be named as this argument;
 
 #### Testing
 

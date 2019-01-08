@@ -12,6 +12,7 @@
     "@babel/plugin-proposal-class-properties": "^7.2.3",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
+    "@easyship/react-template": "^1.0.0",
     "@easyship/ship-core": "^1.0.0",
     "autoprefixer": "^9.4.3",
     "babel-core": "^6.26.3",

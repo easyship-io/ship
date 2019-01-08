@@ -14,5 +14,5 @@
   * [x] build
   * [x] development
   * [x] instructions
-  * [ ] create app
+  * [x] create app
   * [ ] linting
