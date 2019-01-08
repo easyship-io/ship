@@ -11,7 +11,7 @@ const {
 } = require('react-dev-utils/WebpackDevServerUtils');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-const createDevServerConfig = require('../assets/dev-server.config');
+const createDevServerConfig = require('../assets/dev/server.config');
 const clearConsole = require('react-dev-utils/clearConsole');
 const openBrowser = require('react-dev-utils/openBrowser');
 const { forEach } = require('lodash');
