@@ -2,12 +2,16 @@ const argv = require('yargs').argv;
 
 const command = argv._ && argv._[0] || null;
 
-const args = { ...argv };
+const uargs = argv._ && argv._ && [ ...argv._  ] || null;
+uargs && uargs.shift();
 
-delete args['_'];
+const nargs = { ...argv };
+delete nargs['_'];
+delete nargs['$0'];
 
 module.exports = {
     command,
-    args,
-    script: argv.$ || null
+    uargs,
+    nargs,
+    script: argv.$0 || null
 };
