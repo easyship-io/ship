@@ -4,9 +4,9 @@ import React, {
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import logo from '../../assets/react-icon.png';
+import logo from '@assets/react-icon.png';
 import PropTypes from 'prop-types';
-import AppLoader from '../app-loader';
+import AppLoader from '@modules/app-loader';
 import './index.scss';
 
 class PageHeader extends Component {

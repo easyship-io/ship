@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Provider from 'react-redux/es/components/Provider';
 import { mount } from '@easyship/react-enzyme';
 import { defaultMockStore } from '../redux/store.mock';
-import StartPage from '../start-page';
+import StartPage from '@modules/start-page';
 import App from './';
 import { flow } from 'lodash';
 

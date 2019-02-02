@@ -4,7 +4,7 @@ import React, {
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import { createAppLoaderSelector } from '../redux/selectors/app-loader';
+import { createAppLoaderSelector } from '@redux/selectors/app-loader';
 import './index.scss';
 
 class AppLoader extends Component {

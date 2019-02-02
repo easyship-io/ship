@@ -1,8 +1,8 @@
 import React, {
     Component
 } from 'react';
-import StartPage from '../start-page';
-import AppSnackbar from '../app-snackbar';
+import StartPage from '@modules/start-page';
+import AppSnackbar from '@modules/app-snackbar';
 
 class App extends Component {
     render() {

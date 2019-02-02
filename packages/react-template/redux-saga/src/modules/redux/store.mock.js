@@ -3,6 +3,12 @@ import { defaultsDeep } from 'lodash';
 export const defaultMockStore = () => ({
     counter: {
         current: 0
+    },
+    appLoader: {
+
+    },
+    appSnackbar: {
+
     }
 });
 

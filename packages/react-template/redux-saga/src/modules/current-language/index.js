@@ -1,4 +1,4 @@
-import appConfig from '../../app.config';
+import appConfig from '@app/app.config';
 
 const currentLanguage = appConfig.language;
 

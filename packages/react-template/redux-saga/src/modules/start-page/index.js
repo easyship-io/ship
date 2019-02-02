@@ -8,13 +8,13 @@ import connect from 'react-redux/es/connect/connect';
 import {
     decrement,
     increment
-} from '../redux/actions/counter';
-import PageContent from '../page-content';
-import PageHeader from '../page-header';
-import PageRoot from '../page-root';
+} from '@redux/actions/counter';
+import PageContent from '@modules/page-content';
+import PageHeader from '@modules/page-header';
+import PageRoot from '@modules/page-root';
 import { translate } from '../i18n';
 import './index.scss';
-import { createCurrentSelector } from '../redux/selectors/counter';
+import { createCurrentSelector } from '@redux/selectors/counter';
 
 const translationContext = 'component.startPage';
 

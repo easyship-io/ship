@@ -15,8 +15,8 @@ import { connect } from 'react-redux';
 import {
     hideSnackbar,
     SNACKBAR_TYPES
-} from '../redux/actions/app-snackbar';
-import { createAppSnackbarDataSelector } from '../redux/selectors/app-snackbar';
+} from '@redux/actions/app-snackbar';
+import { createAppSnackbarDataSelector } from '@redux/selectors/app-snackbar';
 
 const iconType = {
     success: CheckCircleIcon,

@@ -1,4 +1,4 @@
-import { registerTranslations } from '../modules/i18n';
+import { registerTranslations } from '@modules/i18n';
 
 registerTranslations('en', {
     component: {
