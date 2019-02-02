@@ -63,6 +63,9 @@ const buildConfig = (
                 'node_modules',
                 appPaths.get().nodeModules
             ],
+            alias: {
+
+            },
             extensions: [
                 '.web.js',
                 '.mjs',
