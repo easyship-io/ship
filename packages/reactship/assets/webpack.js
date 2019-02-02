@@ -14,6 +14,11 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
+const {
+    mergeWith,
+    isArray
+} = require('lodash');
+const logger = require('@easyship/ship-core/logger');
 
 const buildConfig = (
     {
@@ -66,9 +71,6 @@ const buildConfig = (
                 '.web.jsx',
                 '.jsx'
             ],
-            alias: {
-                'react-native': 'react-native-web'
-            },
             plugins: []
         },
         module: {
@@ -456,6 +458,21 @@ const buildConfig = (
     };
 
     extendConfig[type]();
+
+    try {
+        const localConfig = require(appPaths.get().localWebpack);
+        mergeWith(
+            webpackConfig,
+            localConfig,
+            (objValue, srcValue) => {
+                if (isArray(objValue)) {
+                    return objValue.concat(srcValue);
+                }
+            }
+        )
+    } catch (error) {
+        logger.warn(error.message);
+    }
 
     return webpackConfig;
 };

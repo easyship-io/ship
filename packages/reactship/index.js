@@ -23,7 +23,8 @@ module.exports = async () => {
         html: 'public/index.html',
         indexJs: 'src/index.js',
         packageJson: 'package.json',
-        nodeModules: 'node_modules'
+        nodeModules: 'node_modules',
+        localWebpack: 'webpack.local.js'
     });
 
     configure();
