@@ -7,7 +7,8 @@ const { forEach } = require('lodash');
 const fs = require('fs');
 
 const toolsPaths = {
-    reactship: path.join(process.cwd(), 'packages/reactship/bin/reactship.js')
+    reactship: path.join(process.cwd(), 'packages/reactship/bin/reactship.js'),
+    nodeship: path.join(process.cwd(), 'packages/nodeship/bin/nodeship.js')
 };
 
 if (os.platform() !== 'win32') {
@@ -18,29 +19,19 @@ if (os.platform() !== 'win32') {
         logger.info(`Removing "${installPath}".`);
         fsExtra.removeSync(installPath);
         logger.info(`Linking "${installPath}" to "${toolPath}".`);
-        exec([
-            `ln -s "${toolPath}" "${installPath}"`,
-            {
-                silent: true
-            },
-            {
-                errorMessage: `"ln -s "${toolPath}" "${installPath}"" command failed.`
-            }
-        ]);
+        exec(
+            [`ln -s "${toolPath}" "${installPath}"`, {silent: true}],
+            {errorMessage: `"ln -s "${toolPath}" "${installPath}"" command failed.`}
+        );
     });
 
     return;
 }
 
-const npmConfig = exec([
-    'npm config ls -l',
-    {
-        silent: true
-    },
-    {
-        errorMessage: '"npm config ls -l" command failed.'
-    }
-]);
+const npmConfig = exec(
+    ['npm config ls -l', {silent: true}],
+    {errorMessage: '"npm config ls -l" command failed.'}
+);
 const prefixRegEx = /^prefix = .*$/m;
 const prefixConfig = npmConfig.match(prefixRegEx);
 let modulesPath = prefixConfig && prefixConfig[0] && prefixConfig[0].split(' = ')[1];

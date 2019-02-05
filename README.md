@@ -16,3 +16,12 @@
   * [x] instructions
   * [x] create app
   * [ ] linting
+- nodeship:
+  * [x] running from command line
+  * [x] gulp tasks
+  * [ ] testing
+  * [x] build
+  * [ ] development
+  * [x] instructions
+  * [ ] create app
+  * [ ] linting
