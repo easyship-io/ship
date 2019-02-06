@@ -1,0 +1,10 @@
+{
+  "name": "@easyship/node-template",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Marko Matić <mail.marko.matic@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^7.0.1"
+  }
+}

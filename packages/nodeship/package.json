@@ -10,6 +10,7 @@
   "dependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
+    "@easyship/node-template": "^1.0.0",
     "@easyship/ship-core": "^1.0.0",
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",

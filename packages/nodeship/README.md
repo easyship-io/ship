@@ -14,7 +14,7 @@ Before running any command, navigate to application root directory (`cd <app-pat
 
 ```
 # Create new application
-TODO
+nodeship create <template> <app-name>
 
 # Test
 TODO
@@ -27,7 +27,9 @@ nodeship build
 ```
 #### Create
 
-TODO
+Command: `nodeship create <template> <app-name>`
+
+Command will create new node project from provided template name inside provided `project-name` directory.
 
 #### Testing
 
