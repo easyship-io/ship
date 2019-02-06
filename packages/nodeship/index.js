@@ -16,7 +16,9 @@ module.exports = async () => {
     appPaths.configure({
         root: process.cwd(),
         src: 'src',
-        build: 'build'
+        build: 'build',
+        packageJson: 'package.json',
+        defaultIndexJs: 'build/index.js'
     });
 
     configure();

@@ -19,8 +19,8 @@ TODO
 # Test
 TODO
 
-# Run development server
-TODO
+# Run development with nodemon
+reactship dev
 
 # Build for production
 nodeship build
@@ -35,7 +35,9 @@ TODO
 
 #### Development
 
-TODO
+Command: `reactship dev`
+
+Command will build application into `build` directory and run it via nodemon. Any change inside `src` directory will result in application rebuild. This command should be used during the development.
 
 #### Build
 

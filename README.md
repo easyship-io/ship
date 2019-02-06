@@ -21,7 +21,7 @@
   * [x] gulp tasks
   * [ ] testing
   * [x] build
-  * [ ] development
+  * [x] development
   * [x] instructions
   * [ ] create app
   * [ ] linting

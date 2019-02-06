@@ -12,6 +12,8 @@
     "@babel/preset-env": "^7.2.3",
     "@easyship/ship-core": "^1.0.0",
     "gulp": "^4.0.0",
-    "gulp-babel": "^8.0.0"
+    "gulp-babel": "^8.0.0",
+    "gulp-watch": "^5.0.1",
+    "nodemon": "^1.18.9"
   }
 }

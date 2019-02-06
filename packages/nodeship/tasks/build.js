@@ -28,15 +28,13 @@ module.exports = () => {
 
     define(
         'build:babel',
-        () => {
-            return gulp.src(path.join(appPaths.get().src, '**/*.js'))
-                .pipe(babel({
-                    presets: [
-                        require.resolve('@babel/preset-env')
-                    ]
-                }))
-                .pipe(gulp.dest(appPaths.get().build))
-        }
+        () => gulp.src(path.join(appPaths.get().src, '**/*.js'))
+            .pipe(babel({
+                presets: [
+                    require.resolve('@babel/preset-env')
+                ]
+            }))
+            .pipe(gulp.dest(appPaths.get().build))
     );
 
     define(
