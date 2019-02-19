@@ -31,6 +31,11 @@ Command: `nodeship create <template> <app-name>`
 
 Command will create new node project from provided template name inside provided `project-name` directory.
 
+##### Arguments
+
+- `template` - Template to create new project from. Allowed values: `empty`;
+- `project-name` - Name of the project. Directory containing source code will be named as this argument;
+
 #### Testing
 
 TODO
