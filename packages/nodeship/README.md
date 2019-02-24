@@ -20,7 +20,7 @@ nodeship create <template> <app-name>
 TODO
 
 # Run development with nodemon
-reactship dev
+nodeship dev
 
 # Build for production
 nodeship build
@@ -42,7 +42,7 @@ TODO
 
 #### Development
 
-Command: `reactship dev`
+Command: `nodeship dev`
 
 Command will build application into `build` directory and run it via nodemon. Any change inside `src` directory will result in application rebuild. This command should be used during the development.
 

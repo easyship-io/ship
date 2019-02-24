@@ -7,6 +7,7 @@ const { forEach } = require('lodash');
 const fs = require('fs');
 
 const toolsPaths = {
+    esmship: path.join(process.cwd(), 'packages/esmship/bin/esmship.js'),
     reactship: path.join(process.cwd(), 'packages/reactship/bin/reactship.js'),
     nodeship: path.join(process.cwd(), 'packages/nodeship/bin/nodeship.js')
 };

@@ -1,0 +1,18 @@
+{
+  "name": "@easyship/esmship",
+  "version": "1.0.0",
+  "main": "index.js",
+  "bin": {
+    "esmship": "bin/esmship.js"
+  },
+  "author": "Marko Matić <mail.marko.matic@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@easyship/esm-template": "^1.0.0",
+    "@easyship/ship-core": "^1.0.0",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0"
+  }
+}
