@@ -112,7 +112,7 @@ const buildConfig = (
                 throw new Error('Production builds must have NODE_ENV=production.');
             }
 
-            const cssFilename = 'static/css/[name].[contenthash:8].css';
+            const cssFilename = 'static/css/[name].[md5:contenthash:hex:20].css';
 
             const extractTextPluginOptions = shouldUseRelativeAssetPaths
                 ? { publicPath: Array(cssFilename.split('/').length).join('../') }
@@ -177,7 +177,6 @@ const buildConfig = (
                                         loader: require.resolve('css-loader'),
                                         options: {
                                             importLoaders: 1,
-                                            minimize: true,
                                             sourceMap: shouldUseSourceMap,
                                         },
                                     },
