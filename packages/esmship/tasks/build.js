@@ -27,11 +27,28 @@ module.exports = () => {
     );
 
     define(
+        'build:copy-assets',
+        () => gulp.src([
+            path.join(appPaths.get().src, '**/*'),
+            `!${path.join(appPaths.get().src, '**/*.js')}`
+        ]).pipe(gulp.dest(appPaths.get().build))
+    );
+
+    define(
         'build:babel',
         () => gulp.src(path.join(appPaths.get().src, '**/*.js'))
             .pipe(babel({
                 presets: [
+                    require.resolve('@babel/preset-react'),
                     require.resolve('@babel/preset-env')
+                ],
+                plugins: [
+                    [
+                        require.resolve('@babel/plugin-proposal-class-properties'),
+                        {
+                            loose: true
+                        }
+                    ]
                 ]
             }))
             .pipe(gulp.dest(appPaths.get().build))
@@ -43,6 +60,7 @@ module.exports = () => {
             const runner = new Runner();
             runner.parallelTasks('build:create');
             runner.parallelTasks('build:clean');
+            runner.parallelTasks('build:copy-assets');
             runner.parallelTasks('build:babel');
             await runner.startAsync();
             done();

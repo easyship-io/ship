@@ -14,7 +14,7 @@ Before running any command, navigate to module root directory (`cd <module-path-
 
 ```
 # Create new module
-esmship create <template> <app-name>
+esmship create <module-name>
 
 # Test
 TODO
