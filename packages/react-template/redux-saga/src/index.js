@@ -8,17 +8,14 @@ import { currentLanguage } from '@modules/current-language';
 import { setLocale } from '@modules/i18n';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
-import {
-    getStore,
-    loadStoreAsync
-} from '@modules/redux/store';
+import getStoreAsync from '@redux/store';
 import './translations';
 import './index.scss';
 
 setLocale(currentLanguage);
 
-const Root = () => (
-    <Provider store={getStore()}>
+const Root = ({ store }) => (
+    <Provider store={store}>
         <React.Fragment>
             <CssBaseline />
             <ThemeProvider>
@@ -28,9 +25,9 @@ const Root = () => (
     </Provider>
 );
 
-loadStoreAsync()
-    .then(() => {
-        ReactDOM.render(<Root />, document.getElementById('root'));
+getStoreAsync()
+    .then(store => {
+        ReactDOM.render(<Root store={store} />, document.getElementById('root'));
         registerServiceWorker();
     })
     .catch(() => console.log('Failed to load previous state'));

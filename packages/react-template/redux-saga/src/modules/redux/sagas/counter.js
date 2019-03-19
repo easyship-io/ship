@@ -1,4 +1,3 @@
-import { delay } from 'redux-saga';
 import {
     takeLatest,
     put,
@@ -24,6 +23,8 @@ import { translate } from '../../i18n';
 import { createCurrentSelector } from '../selectors/counter';
 
 const translationContext = 'redux.saga.counter';
+
+const delay = ms => new Promise(res => setTimeout(res, ms));
 
 function* increment() {
     yield put(showLoader());
