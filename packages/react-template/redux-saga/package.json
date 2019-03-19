@@ -5,6 +5,7 @@
     "@babel/polyfill": "^7.0.0",
     "@babel/runtime": "^7.2.0",
     "@markomatic/redux-store": "git+ssh://git@github.com/markomatic/redux-store.git#46a8aa5f564d62be1c9e60dacc35cbf320cce3d3",
+    "@markomatic/react-snackbar": "git+ssh://git@github.com/markomatic/react-snackbar.git#5ab000d3a7c28df06284894bb91eb7df78e5881e",
     "@material-ui/core": "^3.0.2",
     "@material-ui/icons": "^3.0.1",
     "classnames": "^2.2.6",

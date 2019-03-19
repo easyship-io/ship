@@ -11,7 +11,7 @@ import {
 import {
     showSnackbar,
     SNACKBAR_TYPES
-} from '../actions/app-snackbar';
+} from '@markomatic/react-snackbar';
 import {
     INCREMENT,
     DECREMENT,
@@ -32,11 +32,11 @@ function* increment() {
     const current = yield select(createCurrentSelector());
 
     yield call(delay, 2000);
-
-    yield put(showSnackbar(
+    yield call(
+        showSnackbar,
         translate(translationContext, 'incrementSuccess'),
         SNACKBAR_TYPES.success
-    ));
+    );
     yield put(hideLoader());
     yield put(incrementSuccess(current + 1));
     yield put(addOperation({
@@ -56,10 +56,11 @@ function* decrement() {
 
     yield call(delay, 2000);
 
-    yield put(showSnackbar(
+    yield call(
+        showSnackbar,
         translate(translationContext, 'decrementSuccess'),
         SNACKBAR_TYPES.success
-    ));
+    );
     yield put(hideLoader());
     yield put(incrementSuccess(current - 1));
     yield put(addOperation({

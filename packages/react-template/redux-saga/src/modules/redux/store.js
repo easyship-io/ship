@@ -11,7 +11,6 @@ import { sagas } from './sagas';
 export default async () => {
     setStorageKey('react-app-template');
     addStorageBlacklistedKeys(
-        ['appSnackbar'],
         ['appLoader']
     );
     registerReducers(reducers);

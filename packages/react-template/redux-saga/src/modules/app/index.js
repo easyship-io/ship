@@ -2,14 +2,14 @@ import React, {
     Component
 } from 'react';
 import StartPage from '@modules/start-page';
-import AppSnackbar from '@modules/app-snackbar';
+import { Snackbar } from '@markomatic/react-snackbar';
 
 class App extends Component {
     render() {
         return (
             <React.Fragment>
                 <StartPage />
-                <AppSnackbar />
+                <Snackbar />
             </React.Fragment>
         );
     }
